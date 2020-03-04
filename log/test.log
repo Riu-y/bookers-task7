@@ -1,3 +1,7 @@
 Started GET "/books" for 10.0.2.2 at 2020-03-03 05:50:16 +0000
 Processing by BooksController#index as HTML
 Completed 500 Internal Server Error in 19ms (ActiveRecord: 3.0ms)
+Started GET "/books/1" for 10.0.2.2 at 2020-03-03 09:58:26 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 1.9ms)
