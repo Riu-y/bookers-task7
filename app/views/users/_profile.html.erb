@@ -1,16 +1,29 @@
 <table class="table">
 		<tr><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></tr>
-		<tr>
+		<tr><!-- 名前 -->
 			<th>name</th>
 			<th><%= user.name %></th>
 		</tr>
-
-		<tr>
+		<tr><!-- 自己紹介 -->
 			<th>introduction</th>
 			<th><%= user.introduction %></th>
 		</tr>
+		<tr><!-- フォロー数 -->
+			<% @user ||= current_user %>
+			<th>Follow  </th>
+			<th>
+				<a href="<%= following_user_path(@user) %>">
+				<%= @user.followings.count %></a>
+			</th>
+		</tr>
+		<tr><!-- フォロワー数 -->
+			<th>Followers  </th>
+			<th>
+				<a href="<%= followers_user_path(@user) %>">
+				<%= @user.followers.count %></a>
+			</th>
+		</tr>
 </table>
-
-<div class="row">
+	<%= render 'users/follow_form' %>
+	<br>
 	<%= link_to '',edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{user.id}" %>
-</div>
