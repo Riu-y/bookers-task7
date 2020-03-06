@@ -1,0 +1,1136 @@
+Started GET "/users" for 10.0.2.2 at 2020-03-06 06:41:26 +0000
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.4ms)
+  Rendered users/_profile.html.erb (41.4ms)
+  Rendered books/_newform.html.erb (23.0ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (113.6ms)
+Completed 500 Internal Server Error in 220ms (ActiveRecord: 15.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for 1:Integer):
+    29: 						<td>フォロワー数:<%= user.followers.count %></td>
+    30: 						<td>
+    31: 							<% unless current_user?(user) %>
+    32: 								<% if current_user.following?(user.id) %>
+    33: 								 <% form_for(current_user.following_relationships.build(following_id: other_user.id)) do |f| %>
+    34: 								 <% f.submit "Follow",class: "col-xs-8 btn btn-success" %>
+    35: 								<% else %>
+  
+app/models/user.rb:20:in `following?'
+app/views/users/index.html.erb:32:in `block in _app_views_users_index_html_erb___635238558389691127_46955494107080'
+app/views/users/index.html.erb:24:in `_app_views_users_index_html_erb___635238558389691127_46955494107080'
+Started GET "/users" for 10.0.2.2 at 2020-03-06 06:41:35 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (23.3ms)
+  Rendered users/_profile.html.erb (65.5ms)
+  Rendered books/_newform.html.erb (2.9ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (5.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (125.4ms)
+Completed 500 Internal Server Error in 188ms (ActiveRecord: 11.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for 1:Integer):
+    29: 						<td>フォロワー数:<%= user.followers.count %></td>
+    30: 						<td>
+    31: 							<% unless current_user?(user) %>
+    32: 								<% if current_user.following?(user.id) %>
+    33: 								 <% form_for(current_user.following_relationships.build(following_id: user.id)) do |f| %>
+    34: 								 <% f.submit "Follow",class: "col-xs-8 btn btn-success" %>
+    35: 								<% else %>
+  
+app/models/user.rb:20:in `following?'
+app/views/users/index.html.erb:32:in `block in _app_views_users_index_html_erb___635238558389691127_46955509050040'
+app/views/users/index.html.erb:24:in `_app_views_users_index_html_erb___635238558389691127_46955509050040'
+Started GET "/users" for 10.0.2.2 at 2020-03-06 06:41:53 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.5ms)
+  Rendered users/_profile.html.erb (14.1ms)
+  Rendered books/_newform.html.erb (2.9ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (39.8ms)
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 4.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for 1:Integer):
+    29: 						<td>フォロワー数:<%= user.followers.count %></td>
+    30: 						<td>
+    31: 							<% unless current_user?(user) %>
+    32: 								<% if current_user.following?(user.id) %>
+    33: 								 <% form_for(current_user.following_relationships.build(following_id: user.id)) do |f| %>
+    34: 								 <% f.submit "Follow",class: "col-xs-8 btn btn-success" %>
+    35: 								<% else %>
+  
+app/models/user.rb:20:in `following?'
+app/views/users/index.html.erb:32:in `block in _app_views_users_index_html_erb___635238558389691127_46955509228180'
+app/views/users/index.html.erb:24:in `_app_views_users_index_html_erb___635238558389691127_46955509228180'
+Started GET "/users/2" for 10.0.2.2 at 2020-03-06 06:41:54 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.6ms)
+  Rendered users/_profile.html.erb (12.2ms)
+  Rendered books/_newform.html.erb (2.2ms)
+  [1m[36mBook Load (0.8ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/views/users/show.html.erb:27
+  Rendered users/show.html.erb within layouts/application (40.2ms)
+Completed 200 OK in 707ms (Views: 654.2ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/users/2" for 10.0.2.2 at 2020-03-06 06:41:55 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (10.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.5ms)
+  Rendered users/_profile.html.erb (16.1ms)
+  Rendered books/_newform.html.erb (4.3ms)
+  [1m[36mBook Load (3.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/views/users/show.html.erb:27
+  Rendered users/show.html.erb within layouts/application (49.7ms)
+Completed 200 OK in 366ms (Views: 322.5ms | ActiveRecord: 15.3ms)
+
+
+Started DELETE "/users/sign_out" for 10.0.2.2 at 2020-03-06 06:42:00 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"26lz8cL3ZS06utoZSppu+dify4hSfOajvRm2D1/3fRfOa8US6srAQTawuMX23kxEeurjVYd2DSbaQGZ1KXCv5Q=="}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 14ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 10.0.2.2 at 2020-03-06 06:42:00 +0000
+Processing by HomeController#top as HTML
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 172ms (Views: 163.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-06 06:42:02 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb___2572145191708028438_69817277288600 at /vagrant/submissions2/bookers-task4/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 191ms (Views: 189.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 10.0.2.2 at 2020-03-06 06:42:18 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"J8tSzt0hvP+4RfK76umbr89j/nGnHtQSfCS4m7GRWA8kdnguLoaqfjEL0vr+bwTGLmIu3hKdwLNhi42O7rD3Iw==", "user"=>{"name"=>"sample user", "email"=>"sample@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sample@gmail.com"], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (2.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "sample@gmail.com"], ["encrypted_password", "$2a$11$KqLpBAFh7x.IOO7FJ7oGP.7c9aLGxd/ciF.tQVRgheIilynXgTIBm"], ["name", "sample user"], ["created_at", "2020-03-06 06:42:18.767761"], ["updated_at", "2020-03-06 06:42:18.767761"]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", "2020-03-06 06:42:18.779363"], ["last_sign_in_at", "2020-03-06 06:42:18.779363"], ["current_sign_in_ip", "10.0.2.2"], ["last_sign_in_ip", "10.0.2.2"], ["updated_at", "2020-03-06 06:42:18.782003"], ["id", 3]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 205ms (ActiveRecord: 11.2ms)
+
+
+Started GET "/users/3" for 10.0.2.2 at 2020-03-06 06:42:18 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.4ms)
+  Rendered users/_profile.html.erb (18.4ms)
+  Rendered books/_newform.html.erb (1.5ms)
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:27
+  Rendered users/show.html.erb within layouts/application (30.4ms)
+Completed 200 OK in 150ms (Views: 137.3ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/users/3/edit" for 10.0.2.2 at 2020-03-06 06:42:21 +0000
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (9.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 181ms (Views: 123.7ms | ActiveRecord: 11.9ms)
+
+
+Started PATCH "/users/3" for 10.0.2.2 at 2020-03-06 06:42:35 +0000
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"L1qxncXJTEw6SatnPFiXWNTPTILjM43uOwr2TXy7yb4S6X/amuxr6MLrRePUMCG+VCfehObutW2tlHPHfy64pA==", "user"=>{"name"=>"sample user", "profile_image"=>#<ActionDispatch::Http::UploadedFile:0x00007eff2d979b30 @tempfile=#<Tempfile:/tmp/RackMultipart20200306-7598-ozadug.jpg>, @original_filename="0_apple_logo_ipad_095.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[profile_image]\"; filename=\"0_apple_logo_ipad_095.jpg\"\r\nContent-Type: image/jpeg\r\n">, "introduction"=>"I'm one"}, "commit"=>"Update User", "id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:50
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:24
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "introduction" = ?, "profile_image_id" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["introduction", "I'm one"], ["profile_image_id", "06b1cfd17f8cddd63ee818f56b727ffaa54c13faad933798520484fcfe9b"], ["updated_at", "2020-03-06 06:42:35.161289"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:24
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:24
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 50ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/users/3" for 10.0.2.2 at 2020-03-06 06:42:35 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.4ms)
+  Rendered users/_profile.html.erb (14.1ms)
+  Rendered books/_newform.html.erb (1.6ms)
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:27
+  Rendered users/show.html.erb within layouts/application (26.3ms)
+Completed 200 OK in 183ms (Views: 170.7ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/attachments/19d6553cc82be418727b03bf68241cb7e597738b/store/fill/100/100/06b1cfd17f8cddd63ee818f56b727ffaa54c13faad933798520484fcfe9b/profile_image" for 10.0.2.2 at 2020-03-06 06:42:35 +0000
+Refile::App: [2020-03-06 06:42:36 +0000] GET "/19d6553cc82be418727b03bf68241cb7e597738b/store/fill/100/100/06b1cfd17f8cddd63ee818f56b727ffaa54c13faad933798520484fcfe9b/profile_image" 200 580.5ms
+
+Started POST "/books" for 10.0.2.2 at 2020-03-06 06:42:53 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0mM2ab1t8eEVsMb7wTRCoNo+80K2hyAqMv97Li/2vK0rDww9RJbHITixasZGC71P0ySQWAT6hP15nUYWaU9tcA==", "book"=>{"title"=>"テスト1", "body"=>"testうt"}, "commit"=>"Create Book"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:21
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/books_controller.rb:22
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:22
+  [1m[36mBook Create (1.7ms)[0m  [1m[32mINSERT INTO "books" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "テスト1"], ["body", "testうt"], ["user_id", 3], ["created_at", "2020-03-06 06:42:53.312955"], ["updated_at", "2020-03-06 06:42:53.312955"]]
+  ↳ app/controllers/books_controller.rb:22
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/books_controller.rb:22
+Redirected to http://localhost:3000/books/4
+Completed 302 Found in 45ms (ActiveRecord: 5.5ms)
+
+
+Started GET "/books/4" for 10.0.2.2 at 2020-03-06 06:42:53 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:4
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:6
+  Rendering books/show.html.erb within layouts/application
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.5ms)
+  Rendered users/_profile.html.erb (12.5ms)
+  Rendered books/_newform.html.erb (2.1ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:17
+  [1m[36mFavorite Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 4], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 4]]
+  ↳ app/views/books/show.html.erb:39
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 4]]
+  ↳ app/views/books/show.html.erb:44
+  [1m[36mPostComment Load (0.4ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 4]]
+  ↳ app/views/books/show.html.erb:59
+  Rendered books/show.html.erb within layouts/application (44.6ms)
+Completed 200 OK in 180ms (Views: 152.1ms | ActiveRecord: 7.1ms)
+
+
+Started POST "/books" for 10.0.2.2 at 2020-03-06 06:42:58 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Daz+5HOPqbQZdD7G9aOkIQdjlCcMMzxUVtlNSliDYXT0wMSwinSfdDR1kvtynFvODnn3Pb5OmIMdu3ByHjqwqQ==", "book"=>{"title"=>"テスト", "body"=>""}, "commit"=>"Create Book"}
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:21
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/books_controller.rb:22
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:22
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/books_controller.rb:22
+  Rendering books/index.html.erb within layouts/application
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.5ms)
+  Rendered users/_profile.html.erb (13.8ms)
+  Rendered books/_newform.html.erb (1.9ms)
+  [1m[36mBook Load (0.8ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/views/books/index.html.erb:27
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 1], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/index.html.erb:50
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/index.html.erb:55
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 2], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 2]]
+  ↳ app/views/books/index.html.erb:50
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 2]]
+  ↳ app/views/books/index.html.erb:55
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 3], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 3]]
+  ↳ app/views/books/index.html.erb:50
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 3]]
+  ↳ app/views/books/index.html.erb:55
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 4], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 4]]
+  ↳ app/views/books/index.html.erb:50
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 4]]
+  ↳ app/views/books/index.html.erb:55
+  Rendered books/index.html.erb within layouts/application (72.9ms)
+Completed 200 OK in 227ms (Views: 196.9ms | ActiveRecord: 14.8ms)
+
+
+Started GET "/attachments/7266beebb7dfc372f3fc2aee67f50fc43e408b91/store/fill/50/50/06b1cfd17f8cddd63ee818f56b727ffaa54c13faad933798520484fcfe9b/profile_image" for 10.0.2.2 at 2020-03-06 06:42:59 +0000
+Refile::App: [2020-03-06 06:42:59 +0000] GET "/7266beebb7dfc372f3fc2aee67f50fc43e408b91/store/fill/50/50/06b1cfd17f8cddd63ee818f56b727ffaa54c13faad933798520484fcfe9b/profile_image" 200 384.0ms
+
+Started POST "/books" for 10.0.2.2 at 2020-03-06 06:43:04 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RkLb7fhmQcCz6TxlrY4bwaGAfNnb9Cur6OAhg75LqHW/LuG5AZ13AJ7okFgqseQuqJofw2mJj3yjghy7+PJ5qA==", "book"=>{"title"=>"テスト", "body"=>"テスト"}, "commit"=>"Create Book"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:21
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/books_controller.rb:22
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:22
+  [1m[36mBook Create (1.9ms)[0m  [1m[32mINSERT INTO "books" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "テスト"], ["body", "テスト"], ["user_id", 3], ["created_at", "2020-03-06 06:43:05.014197"], ["updated_at", "2020-03-06 06:43:05.014197"]]
+  ↳ app/controllers/books_controller.rb:22
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/books_controller.rb:22
+Redirected to http://localhost:3000/books/5
+Completed 302 Found in 30ms (ActiveRecord: 8.0ms)
+
+
+Started GET "/books/5" for 10.0.2.2 at 2020-03-06 06:43:05 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:4
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:6
+  Rendering books/show.html.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.8ms)
+  Rendered users/_profile.html.erb (14.9ms)
+  Rendered books/_newform.html.erb (3.4ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:17
+  [1m[36mFavorite Exists (4.9ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 5], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 5]]
+  ↳ app/views/books/show.html.erb:39
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 5]]
+  ↳ app/views/books/show.html.erb:44
+  [1m[36mPostComment Load (0.9ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 5]]
+  ↳ app/views/books/show.html.erb:59
+  Rendered books/show.html.erb within layouts/application (103.3ms)
+Completed 200 OK in 282ms (Views: 251.9ms | ActiveRecord: 17.4ms)
+
+
+Started POST "/books/5/favorites" for 10.0.2.2 at 2020-03-06 06:43:07 +0000
+Processing by FavoritesController#create as HTML
+  Parameters: {"authenticity_token"=>"34aRo7XHNOneDf9Pt8hrKz7TFOMMQoRxc6+nj+SVDGUm6qv3TDwCKfMMU3Iw95TEN8l3+b4/IKY4zZq3oizduA==", "book_id"=>"5"}
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:3
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/favorites_controller.rb:7
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:7
+  [1m[36mFavorite Create (1.6ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 3], ["book_id", 5], ["created_at", "2020-03-06 06:43:07.750385"], ["updated_at", "2020-03-06 06:43:07.750385"]]
+  ↳ app/controllers/favorites_controller.rb:7
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/favorites_controller.rb:7
+Redirected to http://localhost:3000/books/5
+Completed 302 Found in 32ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/books/5" for 10.0.2.2 at 2020-03-06 06:43:07 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:4
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:6
+  Rendering books/show.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.4ms)
+  Rendered users/_profile.html.erb (11.9ms)
+  Rendered books/_newform.html.erb (3.8ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:17
+  [1m[36mFavorite Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 5], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 5]]
+  ↳ app/views/books/show.html.erb:33
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 5]]
+  ↳ app/views/books/show.html.erb:44
+  [1m[36mPostComment Load (0.3ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 5]]
+  ↳ app/views/books/show.html.erb:59
+  Rendered books/show.html.erb within layouts/application (34.1ms)
+Completed 200 OK in 187ms (Views: 172.0ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/books/5/post_comments" for 10.0.2.2 at 2020-03-06 06:43:15 +0000
+Processing by PostCommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zih1HOBdKU+bp9OmqqntSSz8Cgb2kVzXYAdM4LnnWrU3RE9IGaYfj7amf5stlhKmJeZpHETs+AArZXHY/16LaA==", "post_comment"=>{"comment"=>"初コメント！"}, "commit"=>"送信", "book_id"=>"5"}
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_comments_controller.rb:3
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/post_comments_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_comments_controller.rb:9
+  [1m[36mBook Load (1.5ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_comments_controller.rb:9
+  [1m[36mPostComment Create (1.8ms)[0m  [1m[32mINSERT INTO "post_comments" ("comment", "user_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "初コメント！"], ["user_id", 3], ["book_id", 5], ["created_at", "2020-03-06 06:43:15.610993"], ["updated_at", "2020-03-06 06:43:15.610993"]]
+  ↳ app/controllers/post_comments_controller.rb:9
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_comments_controller.rb:9
+Redirected to http://localhost:3000/books/5
+Completed 302 Found in 49ms (ActiveRecord: 10.2ms)
+
+
+Started GET "/books/5" for 10.0.2.2 at 2020-03-06 06:43:15 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mBook Load (0.9ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:4
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:6
+  Rendering books/show.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.4ms)
+  Rendered users/_profile.html.erb (9.2ms)
+  Rendered books/_newform.html.erb (1.5ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:17
+  [1m[36mFavorite Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 5], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 5]]
+  ↳ app/views/books/show.html.erb:33
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 5]]
+  ↳ app/views/books/show.html.erb:44
+  [1m[36mPostComment Load (0.2ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 5]]
+  ↳ app/views/books/show.html.erb:59
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:63
+  Rendered books/show.html.erb within layouts/application (35.0ms)
+Completed 200 OK in 195ms (Views: 180.9ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/attachments/b28490714cd015905ceccb7bc2e7d775f0fcf15f/store/fill/60/60/06b1cfd17f8cddd63ee818f56b727ffaa54c13faad933798520484fcfe9b/profile_image" for 10.0.2.2 at 2020-03-06 06:43:16 +0000
+Refile::App: [2020-03-06 06:43:16 +0000] GET "/b28490714cd015905ceccb7bc2e7d775f0fcf15f/store/fill/60/60/06b1cfd17f8cddd63ee818f56b727ffaa54c13faad933798520484fcfe9b/profile_image" 200 343.6ms
+
+Started GET "/books" for 10.0.2.2 at 2020-03-06 06:43:18 +0000
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (8.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering books/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.6ms)
+  Rendered users/_profile.html.erb (11.7ms)
+  Rendered books/_newform.html.erb (1.9ms)
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/views/books/index.html.erb:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 1], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/index.html.erb:50
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/index.html.erb:55
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 2], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 2]]
+  ↳ app/views/books/index.html.erb:50
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 2]]
+  ↳ app/views/books/index.html.erb:55
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 3], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 3]]
+  ↳ app/views/books/index.html.erb:50
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 3]]
+  ↳ app/views/books/index.html.erb:55
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 4], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 4]]
+  ↳ app/views/books/index.html.erb:50
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 4]]
+  ↳ app/views/books/index.html.erb:55
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 5], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 5]]
+  ↳ app/views/books/index.html.erb:45
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 5]]
+  ↳ app/views/books/index.html.erb:55
+  Rendered books/index.html.erb within layouts/application (69.0ms)
+Completed 200 OK in 216ms (Views: 161.2ms | ActiveRecord: 19.2ms)
+
+
+Started GET "/users" for 10.0.2.2 at 2020-03-06 06:43:19 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (16.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.4ms)
+  Rendered users/_profile.html.erb (13.0ms)
+  Rendered books/_newform.html.erb (1.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (34.4ms)
+Completed 500 Internal Server Error in 125ms (ActiveRecord: 20.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for 1:Integer):
+    29: 						<td>フォロワー数:<%= user.followers.count %></td>
+    30: 						<td>
+    31: 							<% unless current_user?(user) %>
+    32: 								<% if current_user.following?(user.id) %>
+    33: 								 <% form_for(current_user.following_relationships.build(following_id: user.id)) do |f| %>
+    34: 								 <% f.submit "Follow",class: "col-xs-8 btn btn-success" %>
+    35: 								<% else %>
+  
+app/models/user.rb:20:in `following?'
+app/views/users/index.html.erb:32:in `block in _app_views_users_index_html_erb___635238558389691127_69817278572620'
+app/views/users/index.html.erb:24:in `_app_views_users_index_html_erb___635238558389691127_69817278572620'
+Started GET "/books" for 10.0.2.2 at 2020-03-06 06:43:22 +0000
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering books/index.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.4ms)
+  Rendered users/_profile.html.erb (15.5ms)
+  Rendered books/_newform.html.erb (2.2ms)
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/views/books/index.html.erb:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 1], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/index.html.erb:50
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/index.html.erb:55
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 2], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 2]]
+  ↳ app/views/books/index.html.erb:50
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 2]]
+  ↳ app/views/books/index.html.erb:55
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 3], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 3]]
+  ↳ app/views/books/index.html.erb:50
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 3]]
+  ↳ app/views/books/index.html.erb:55
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 4], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 4]]
+  ↳ app/views/books/index.html.erb:50
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 4]]
+  ↳ app/views/books/index.html.erb:55
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 5], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 5]]
+  ↳ app/views/books/index.html.erb:45
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 5]]
+  ↳ app/views/books/index.html.erb:55
+  Rendered books/index.html.erb within layouts/application (72.3ms)
+Completed 200 OK in 245ms (Views: 205.5ms | ActiveRecord: 11.8ms)
+
+
+Started GET "/users" for 10.0.2.2 at 2020-03-06 06:43:24 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.4ms)
+  Rendered users/_profile.html.erb (10.8ms)
+  Rendered books/_newform.html.erb (2.4ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (33.6ms)
+Completed 500 Internal Server Error in 100ms (ActiveRecord: 4.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for 1:Integer):
+    29: 						<td>フォロワー数:<%= user.followers.count %></td>
+    30: 						<td>
+    31: 							<% unless current_user?(user) %>
+    32: 								<% if current_user.following?(user.id) %>
+    33: 								 <% form_for(current_user.following_relationships.build(following_id: user.id)) do |f| %>
+    34: 								 <% f.submit "Follow",class: "col-xs-8 btn btn-success" %>
+    35: 								<% else %>
+  
+app/models/user.rb:20:in `following?'
+app/views/users/index.html.erb:32:in `block in _app_views_users_index_html_erb___635238558389691127_69817009990700'
+app/views/users/index.html.erb:24:in `_app_views_users_index_html_erb___635238558389691127_69817009990700'
+Started GET "/books" for 10.0.2.2 at 2020-03-06 06:43:26 +0000
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering books/index.html.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.4ms)
+  Rendered users/_profile.html.erb (11.8ms)
+  Rendered books/_newform.html.erb (1.7ms)
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/views/books/index.html.erb:27
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 1], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/index.html.erb:50
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/index.html.erb:55
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 2], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 2]]
+  ↳ app/views/books/index.html.erb:50
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 2]]
+  ↳ app/views/books/index.html.erb:55
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 3], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 3]]
+  ↳ app/views/books/index.html.erb:50
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 3]]
+  ↳ app/views/books/index.html.erb:55
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 4], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 4]]
+  ↳ app/views/books/index.html.erb:50
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 4]]
+  ↳ app/views/books/index.html.erb:55
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/index.html.erb:30
+  [1m[36mFavorite Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 5], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 5]]
+  ↳ app/views/books/index.html.erb:45
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 5]]
+  ↳ app/views/books/index.html.erb:55
+  Rendered books/index.html.erb within layouts/application (98.7ms)
+Completed 200 OK in 327ms (Views: 276.4ms | ActiveRecord: 21.7ms)
+
+
+Started GET "/books/1" for 10.0.2.2 at 2020-03-06 06:43:28 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (24.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mBook Load (3.4ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:4
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:6
+  Rendering books/show.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/_profile.html.erb:23
+  [1m[36mRelationship Load (0.3ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 3], ["following_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  Rendered users/_follow.html.erb (6.1ms)
+  Rendered users/_follow_form.html.erb (12.0ms)
+  Rendered users/_profile.html.erb (21.8ms)
+  Rendered books/_newform.html.erb (1.5ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:17
+  [1m[36mFavorite Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 1], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/show.html.erb:39
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/show.html.erb:44
+  [1m[36mPostComment Load (0.3ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/show.html.erb:59
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:63
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:63
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:63
+  Rendered books/show.html.erb within layouts/application (50.3ms)
+Completed 200 OK in 211ms (Views: 142.8ms | ActiveRecord: 34.5ms)
+
+
+Started POST "/relationships" for 10.0.2.2 at 2020-03-06 06:43:30 +0000
+Processing by RelationshipsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"p8yP0mxGeu0PO/cZr063x5C268rOU8SPYa+u3owa7xkef1RVAm+aGeFAO/IOXcsG5JCXh2awPz8Cjd/919m53Q==", "relationship"=>{"following_id"=>"1"}, "commit"=>"Follow"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/relationships_controller.rb:3
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/relationships_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:24
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mRelationship Create (3.8ms)[0m  [1m[32mINSERT INTO "relationships" ("follower_id", "following_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["follower_id", 3], ["following_id", 1], ["created_at", "2020-03-06 06:43:30.390907"], ["updated_at", "2020-03-06 06:43:30.390907"]]
+  ↳ app/models/user.rb:24
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:24
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 30ms (ActiveRecord: 9.8ms)
+
+
+Started GET "/users/1" for 10.0.2.2 at 2020-03-06 06:43:30 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/_profile.html.erb:23
+  [1m[36mRelationship Load (0.6ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 3], ["following_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 3], ["following_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/_unfollow.html.erb:1
+  Rendered users/_unfollow.html.erb (2.7ms)
+  Rendered users/_follow_form.html.erb (10.8ms)
+  Rendered users/_profile.html.erb (24.1ms)
+  Rendered books/_newform.html.erb (1.9ms)
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:27
+  Rendered users/show.html.erb within layouts/application (36.4ms)
+Completed 200 OK in 164ms (Views: 153.9ms | ActiveRecord: 3.9ms)
+
+
+Started DELETE "/relationships/19" for 10.0.2.2 at 2020-03-06 06:43:37 +0000
+Processing by RelationshipsController#destroy as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y4M+z4DzualqMJXaE+3NrtzGFgXu2uBMVl8TThHSKfcy7wSbeQiPaUcxOeeU0jJB1dx1H1ynRJsdPS52V2v4Kg==", "commit"=>"Unfollow", "id"=>"19"}
+  [1m[36mRelationship Load (1.5ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/relationships_controller.rb:9
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/relationships_controller.rb:9
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/relationships_controller.rb:10
+  [1m[36mRelationship Load (0.6ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 3], ["following_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:28
+  [1m[36mRelationship Destroy (2.8ms)[0m  [1m[31mDELETE FROM "relationships" WHERE "relationships"."id" = ?[0m  [["id", 19]]
+  ↳ app/models/user.rb:28
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:28
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 42ms (ActiveRecord: 12.7ms)
+
+
+Started GET "/users/1" for 10.0.2.2 at 2020-03-06 06:43:37 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/_profile.html.erb:23
+  [1m[36mRelationship Load (0.6ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 3], ["following_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  Rendered users/_follow.html.erb (1.6ms)
+  Rendered users/_follow_form.html.erb (9.3ms)
+  Rendered users/_profile.html.erb (22.2ms)
+  Rendered books/_newform.html.erb (1.8ms)
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:27
+  Rendered users/show.html.erb within layouts/application (41.7ms)
+Completed 200 OK in 218ms (Views: 201.1ms | ActiveRecord: 4.8ms)
+
+
+Started POST "/relationships" for 10.0.2.2 at 2020-03-06 06:43:39 +0000
+Processing by RelationshipsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"owmVQlPXRVzxS5jQ1Hvv/s+RtFH5XM6JHfN0iKkEUcdaZa8WqixznNxKNO1TRBARxovXS0shal5WkUmw772AGg==", "relationship"=>{"following_id"=>"1"}, "commit"=>"Follow"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/relationships_controller.rb:3
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/relationships_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:24
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mRelationship Create (3.2ms)[0m  [1m[32mINSERT INTO "relationships" ("follower_id", "following_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["follower_id", 3], ["following_id", 1], ["created_at", "2020-03-06 06:43:39.984896"], ["updated_at", "2020-03-06 06:43:39.984896"]]
+  ↳ app/models/user.rb:24
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:24
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 33ms (ActiveRecord: 11.7ms)
+
+
+Started GET "/users/1" for 10.0.2.2 at 2020-03-06 06:43:40 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/_profile.html.erb:23
+  [1m[36mRelationship Load (0.8ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 3], ["following_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 3], ["following_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/_unfollow.html.erb:1
+  Rendered users/_unfollow.html.erb (3.7ms)
+  Rendered users/_follow_form.html.erb (19.4ms)
+  Rendered users/_profile.html.erb (33.8ms)
+  Rendered books/_newform.html.erb (2.8ms)
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:27
+  Rendered users/show.html.erb within layouts/application (50.4ms)
+Completed 200 OK in 208ms (Views: 192.3ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/books/1" for 10.0.2.2 at 2020-03-06 06:43:42 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mBook Load (12.7ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:4
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:6
+  Rendering books/show.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/_profile.html.erb:23
+  [1m[36mRelationship Load (0.5ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 3], ["following_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 3], ["following_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/_unfollow.html.erb:1
+  Rendered users/_unfollow.html.erb (2.8ms)
+  Rendered users/_follow_form.html.erb (8.8ms)
+  Rendered users/_profile.html.erb (19.9ms)
+  Rendered books/_newform.html.erb (2.5ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:17
+  [1m[36mFavorite Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 1], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/show.html.erb:39
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/show.html.erb:44
+  [1m[36mPostComment Load (0.3ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/show.html.erb:59
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:63
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:63
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:63
+  Rendered books/show.html.erb within layouts/application (45.5ms)
+Completed 200 OK in 207ms (Views: 143.4ms | ActiveRecord: 18.8ms)
+
+
+Started POST "/books/1/post_comments" for 10.0.2.2 at 2020-03-06 06:43:51 +0000
+Processing by PostCommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MlDiKIa0OtkpXEU8U6d7UsnBo1QkWLd/nUNzKHIxgGBCF0ag9AXM/yZhZviXzLu8yZA8POzoUUvlngC/yvGHLQ==", "post_comment"=>{"comment"=>"素晴らしい"}, "commit"=>"送信", "book_id"=>"1"}
+  [1m[36mBook Load (0.8ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/post_comments_controller.rb:3
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/post_comments_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_comments_controller.rb:9
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/post_comments_controller.rb:9
+  [1m[36mPostComment Create (2.6ms)[0m  [1m[32mINSERT INTO "post_comments" ("comment", "user_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "素晴らしい"], ["user_id", 3], ["book_id", 1], ["created_at", "2020-03-06 06:43:51.808265"], ["updated_at", "2020-03-06 06:43:51.808265"]]
+  ↳ app/controllers/post_comments_controller.rb:9
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_comments_controller.rb:9
+Redirected to http://localhost:3000/books/1
+Completed 302 Found in 41ms (ActiveRecord: 10.1ms)
+
+
+Started GET "/books/1" for 10.0.2.2 at 2020-03-06 06:43:51 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mBook Load (0.9ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:4
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:6
+  Rendering books/show.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/_profile.html.erb:23
+  [1m[36mRelationship Load (0.5ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 3], ["following_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[36mCACHE Relationship Load (0.1ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 3], ["following_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/_unfollow.html.erb:1
+  Rendered users/_unfollow.html.erb (2.2ms)
+  Rendered users/_follow_form.html.erb (12.2ms)
+  Rendered users/_profile.html.erb (22.8ms)
+  Rendered books/_newform.html.erb (1.6ms)
+  [1m[36mCACHE User Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:17
+  [1m[36mFavorite Exists (5.5ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 1], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/book.rb:11
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/show.html.erb:39
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/show.html.erb:44
+  [1m[36mPostComment Load (0.3ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/views/books/show.html.erb:59
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:63
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:63
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:63
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:63
+  Rendered books/show.html.erb within layouts/application (103.4ms)
+Completed 200 OK in 300ms (Views: 269.3ms | ActiveRecord: 13.8ms)
+
+
+Started GET "/users" for 10.0.2.2 at 2020-03-06 06:45:18 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (19.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.6ms)
+  Rendered users/_profile.html.erb (11.7ms)
+  Rendered books/_newform.html.erb (2.5ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (35.8ms)
+Completed 500 Internal Server Error in 130ms (ActiveRecord: 23.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for 1:Integer):
+    29: 						<td>フォロワー数:<%= user.followers.count %></td>
+    30: 						<td>
+    31: 							<% unless current_user?(user) %>
+    32: 								<% if current_user.following?(user.id) %>
+    33: 								 <% form_for(current_user.following_relationships.build(following_id: user.id)) do |f| %>
+    34: 								 <% f.submit "Follow",class: "col-xs-8 btn btn-success" %>
+    35: 								<% else %>
+  
+app/models/user.rb:20:in `following?'
+app/views/users/index.html.erb:32:in `block in _app_views_users_index_html_erb___635238558389691127_69817213563040'
+app/views/users/index.html.erb:24:in `_app_views_users_index_html_erb___635238558389691127_69817213563040'
+Started GET "/users" for 10.0.2.2 at 2020-03-06 06:45:32 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.6ms)
+  Rendered users/_profile.html.erb (32.3ms)
+  Rendered books/_newform.html.erb (1.7ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (87.0ms)
+Completed 500 Internal Server Error in 112ms (ActiveRecord: 4.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for 1:Integer):
+    29: 						<td>フォロワー数:<%= user.followers.count %></td>
+    30: 						<td>
+    31: 							<% unless current_user?(user) %>
+    32: 								<% if current_user.following?(user.id) %>
+    33: 								 <% form_for(current_user.following_relationships.build(following_id: user.id)) do |f| %>
+    34: 								 <% f.submit "Follow",class: "col-xs-8 btn btn-success" %>
+    35: 								<% else %>
+  
+app/models/user.rb:20:in `following?'
+app/views/users/index.html.erb:32:in `block in _app_views_users_index_html_erb___635238558389691127_69817219619380'
+app/views/users/index.html.erb:24:in `_app_views_users_index_html_erb___635238558389691127_69817219619380'

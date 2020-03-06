@@ -1,0 +1,290 @@
+Started GET "/users" for 10.0.2.2 at 2020-03-06 06:30:28 +0000
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.5ms)
+  Rendered users/_profile.html.erb (26.6ms)
+  Rendered books/_newform.html.erb (15.8ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (77.3ms)
+Completed 500 Internal Server Error in 135ms (ActiveRecord: 9.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for 1:Integer):
+    29: 						<td>フォロワー数:<%= user.followers.count %></td>
+    30: 						<td>
+    31: 							<% unless current_user?(user) %>
+    32: 								<% if current_user.following?(user.id) %>
+    33: 								 <% form_for(current_user.following_relationships.build(following_id: user.id)) do |f| %>
+    34: 								 <% f.submit "Follow",class: "col-xs-8 btn btn-success" %>
+    35: 								<% else %>
+  
+app/models/user.rb:20:in `following?'
+app/views/users/index.html.erb:32:in `block in _app_views_users_index_html_erb___4359845258211392293_47187882464680'
+app/views/users/index.html.erb:24:in `_app_views_users_index_html_erb___4359845258211392293_47187882464680'
+Started GET "/users" for 10.0.2.2 at 2020-03-06 06:34:02 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.4ms)
+  Rendered users/_profile.html.erb (13.2ms)
+  Rendered books/_newform.html.erb (24.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (57.2ms)
+Completed 500 Internal Server Error in 74ms (ActiveRecord: 3.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for 1:Integer):
+    29: 						<td>フォロワー数:<%= user.followers.count %></td>
+    30: 						<td>
+    31: 							<% unless current_user?(user) %>
+    32: 								<% if current_user.following?(user.id) %>
+    33: 								 <% form_for(current_user.following_relationships.build(following_id: user.id)) do |f| %>
+    34: 								 <% f.submit "Follow",class: "col-xs-8 btn btn-success" %>
+    35: 								<% else %>
+  
+app/models/user.rb:20:in `following?'
+app/views/users/index.html.erb:32:in `block in _app_views_users_index_html_erb___4359845258211392293_47187897306060'
+app/views/users/index.html.erb:24:in `_app_views_users_index_html_erb___4359845258211392293_47187897306060'
+Started GET "/users" for 10.0.2.2 at 2020-03-06 06:34:03 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.6ms)
+  Rendered users/_profile.html.erb (11.1ms)
+  Rendered books/_newform.html.erb (2.4ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (48.7ms)
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 4.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for 1:Integer):
+    29: 						<td>フォロワー数:<%= user.followers.count %></td>
+    30: 						<td>
+    31: 							<% unless current_user?(user) %>
+    32: 								<% if current_user.following?(user.id) %>
+    33: 								 <% form_for(current_user.following_relationships.build(following_id: user.id)) do |f| %>
+    34: 								 <% f.submit "Follow",class: "col-xs-8 btn btn-success" %>
+    35: 								<% else %>
+  
+app/models/user.rb:20:in `following?'
+app/views/users/index.html.erb:32:in `block in _app_views_users_index_html_erb___4359845258211392293_47187867008500'
+app/views/users/index.html.erb:24:in `_app_views_users_index_html_erb___4359845258211392293_47187867008500'
+Started GET "/users" for 10.0.2.2 at 2020-03-06 06:38:47 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.6ms)
+  Rendered users/_profile.html.erb (18.1ms)
+  Rendered books/_newform.html.erb (2.5ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (1.9ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 2], ["following_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:35
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.7ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 2], ["following_id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:35
+  Rendered users/index.html.erb within layouts/application (84.0ms)
+Completed 500 Internal Server Error in 103ms (ActiveRecord: 7.6ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    32: 								 <% form_for(current_user.following_relationships.build(following_id: user.id)) do |f| %>
+    33: 								 <% f.submit "Follow",class: "col-xs-8 btn btn-success" %>
+    34: 								<% else %>
+    35: 									<%= form_for(current_user.following_relationships.find_by(following_id: user.id), html: {method: :delete}) do |f| %>
+    36: 								<%= f.submit "Unffolow",class: "col-xs-8 btn btn-primary" %>
+    37: 								<% end %>
+    38: 							<% end %>
+  
+app/views/users/index.html.erb:35:in `block (2 levels) in _app_views_users_index_html_erb___4359845258211392293_47187897393100'
+app/views/users/index.html.erb:32:in `block in _app_views_users_index_html_erb___4359845258211392293_47187897393100'
+app/views/users/index.html.erb:24:in `_app_views_users_index_html_erb___4359845258211392293_47187897393100'
+Started GET "/users" for 10.0.2.2 at 2020-03-06 06:39:05 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.8ms)
+  Rendered users/_profile.html.erb (24.9ms)
+  Rendered books/_newform.html.erb (25.4ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (99.0ms)
+Completed 500 Internal Server Error in 215ms (ActiveRecord: 11.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for 1:Integer):
+    29: 						<td>フォロワー数:<%= user.followers.count %></td>
+    30: 						<td>
+    31: 							<% unless current_user?(user) %>
+    32: 								<% if current_user.following?(user.id) %>
+    33: 								 <% form_for(current_user.following_relationships.build(following_id: user.id)) do |f| %>
+    34: 								 <% f.submit "Follow",class: "col-xs-8 btn btn-success" %>
+    35: 								<% else %>
+  
+app/models/user.rb:20:in `following?'
+app/views/users/index.html.erb:32:in `block in _app_views_users_index_html_erb___4359845258211392293_47187894499540'
+app/views/users/index.html.erb:24:in `_app_views_users_index_html_erb___4359845258211392293_47187894499540'
+Started GET "/users" for 10.0.2.2 at 2020-03-06 06:39:58 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.4ms)
+  Rendered users/_profile.html.erb (13.6ms)
+  Rendered books/_newform.html.erb (1.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (42.7ms)
+Completed 500 Internal Server Error in 59ms (ActiveRecord: 4.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for 1:Integer):
+    29: 						<td>フォロワー数:<%= user.followers.count %></td>
+    30: 						<td>
+    31: 							<% unless current_user?(user) %>
+    32: 								<% if current_user.following?(user.id) %>
+    33: 								 <% form_for(current_user.following_relationships.build(following_id: user.id)) do |f| %>
+    34: 								 <% f.submit "Follow",class: "col-xs-8 btn btn-success" %>
+    35: 								<% else %>
+  
+app/models/user.rb:20:in `following?'
+app/views/users/index.html.erb:32:in `block in _app_views_users_index_html_erb___4359845258211392293_47187893383560'
+app/views/users/index.html.erb:24:in `_app_views_users_index_html_erb___4359845258211392293_47187893383560'
+Started GET "/users" for 10.0.2.2 at 2020-03-06 06:41:11 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (6.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.6ms)
+  Rendered users/_profile.html.erb (46.4ms)
+  Rendered books/_newform.html.erb (4.5ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (142.2ms)
+Completed 500 Internal Server Error in 201ms (ActiveRecord: 13.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for 1:Integer):
+    29: 						<td>フォロワー数:<%= user.followers.count %></td>
+    30: 						<td>
+    31: 							<% unless current_user?(user) %>
+    32: 								<% if current_user.following?(user.id) %>
+    33: 								 <% form_for(current_user.following_relationships.build(following_id: other_user.id)) do |f| %>
+    34: 								 <% f.submit "Follow",class: "col-xs-8 btn btn-success" %>
+    35: 								<% else %>
+  
+app/models/user.rb:20:in `following?'
+app/views/users/index.html.erb:32:in `block in _app_views_users_index_html_erb___4359845258211392293_47187891958960'
+app/views/users/index.html.erb:24:in `_app_views_users_index_html_erb___4359845258211392293_47187891958960'
+Started GET "/users" for 10.0.2.2 at 2020-03-06 06:41:16 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.4ms)
+  Rendered users/_profile.html.erb (15.8ms)
+  Rendered books/_newform.html.erb (1.8ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (38.3ms)
+Completed 500 Internal Server Error in 69ms (ActiveRecord: 4.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for 1:Integer):
+    29: 						<td>フォロワー数:<%= user.followers.count %></td>
+    30: 						<td>
+    31: 							<% unless current_user?(user) %>
+    32: 								<% if current_user.following?(user.id) %>
+    33: 								 <% form_for(current_user.following_relationships.build(following_id: other_user.id)) do |f| %>
+    34: 								 <% f.submit "Follow",class: "col-xs-8 btn btn-success" %>
+    35: 								<% else %>
+  
+app/models/user.rb:20:in `following?'
+app/views/users/index.html.erb:32:in `block in _app_views_users_index_html_erb___4359845258211392293_47187888030580'
+app/views/users/index.html.erb:24:in `_app_views_users_index_html_erb___4359845258211392293_47187888030580'
