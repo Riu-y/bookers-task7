@@ -6,20 +6,14 @@ class SearchController < ApplicationController
 		@content = params["search"]["content"]
 		@how = params["search"]["how"]
 		@datas = search_for(@how, @model, @content)
+    #binding.pry
 	end
-
-	# def search
-	# 	@model = params["search"]["model"]
-	# 	@content = params["search"]["content"]
-	# 	@how = params["search"]["how"]
-	# 	@datas = search_for(@how, @model, @content)
- #  end
 
   private
   def match(model, content)
   	if model == 'user'
   		User.where(name: content)
-  	elsif model == 'post'
+  	elsif model == 'book'
   		Book.where(title: content)
   	end
   end
@@ -27,7 +21,7 @@ class SearchController < ApplicationController
   def forward(model,  content)
   	if model == 'user'
   		User.where("name LIKE ?", "#{content}%")
-  	elsif model == 'post'
+  	elsif model == 'book'
   		Book.where("title LIKE ?", "#{content}%")
   	end
   end
@@ -35,7 +29,7 @@ class SearchController < ApplicationController
   def backward(model, content)
   	if model == 'user'
   		User.where("name LIKE ?", "%#{content}")
-  	elsif model == 'post'   
+  	elsif model == 'book'   
   		Book.where("title LIKE? ", "%#{content}")
   	end   
   end
@@ -43,7 +37,7 @@ class SearchController < ApplicationController
   def partical(model, content)
   	if model == 'user'
   		User.where("name LIKE ?", "%#{content}%")
-  	elsif model == 'post'   
+  	elsif model == 'book'   
   		Book.where("title LIKE ?", "%#{content}%")
   	end
   end

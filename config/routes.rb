@@ -14,7 +14,5 @@ Rails.application.routes.draw do
   get 'home/about' => 'home#about'
 
   get 'search/index' =>'search#index'
-  # get 'search/index' => 'search#index'
-
 end
 
