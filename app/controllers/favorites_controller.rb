@@ -5,7 +5,9 @@ class FavoritesController < ApplicationController
 		# 上の記述と同じ効果
 		# favorite = Favorite.new(user_id: current_user.id, book_id: @book.id)
 		favorite.save
-		redirect_back(fallback_location: books_path)
+		 redirect_back(fallback_location: books_path)
+		# ↑上記のredirectは非同期化のため削除
+
 		# -favoritesの流れ-
 		# favorite controllerでcreateのactionが呼び出されるとBook.findで本を探し出して
 		#  favorite.newでいいねを作成。その際のuser.id はcurrentで指定、book_idは（book_id: @book.id）で指定して
@@ -15,6 +17,7 @@ class FavoritesController < ApplicationController
 		book = Book.find(params[:book_id])
 		favorite = current_user.favorites.find_by(book_id: book.id)
 		favorite.destroy
-		redirect_to books_path
+		 redirect_back(fallback_location: books_path)
+		# ↑上記のredirectは非同期化のため削除
 	end
 end
