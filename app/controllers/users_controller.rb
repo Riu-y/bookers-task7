@@ -31,13 +31,13 @@ class UsersController < ApplicationController
   def following
     @user = User.find(params[:id])
     @users = @user.followers
-    render 'show_follow'
+    redirect_back(fallback_location: users_path)
   end
 
     def followers
     @user  = User.find(params[:id])
     @users = @user.followers
-    render 'show_follower'
+    redirect_back(fallback_location: users_path)
   end
 
   private

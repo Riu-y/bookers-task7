@@ -7,6 +7,12 @@ class Book < ApplicationRecord
 
 	has_many :favorites, dependent: :destroy
 	has_many :post_comments, dependent: :destroy
+
+def self.search(search)
+      return Post.all unless search
+      Post.where(['content LIKE ?', "%#{search}%"])
+    end
+
 	def favorited_by?(user)
 		favorites.where(user_id: user.id).exists?
 	end
