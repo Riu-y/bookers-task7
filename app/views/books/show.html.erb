@@ -54,34 +54,14 @@
 					</tr>
 				</tbody>
 			</table>
+			<!-- ２列目コメントフォーム -->
+			<%= render 'post_comments/comment_form', { bookdetail: @bookdetail, post_comment: @post_comment } %>
+ 			<!-- ３列目コメント一覧 -->
 			<h4>コメント一覧</h4>
-			<table class="table">
-				<% @bookdetail.post_comments.each do |post_comment| %>
-				<tbody>
-					<tr><!-- ２列目 -->
-						<td><!--コメント一覧 -->
-							<%= attachment_image_tag post_comment.user,:profile_image, :fill,60,60, fallback:"no-image-mini.jpg" %><br>
-							<%= post_comment.user.name %>
-						</td>
-						<td>
-							<%= post_comment.comment %>
-						</td>
-						<td>
-							<% if @bookdetail.user == current_user %>
-							<%= link_to "Destroy", book_post_comments_path(post_comment) , method: :delete, "data-confirm"=>"本当にコメントを削除しても良いですか？", class: "btn-sm btn-danger" %>
-							<% end %>
-						</td>
-					</tr><!-- ２列目コメント一覧 -->
-				</tbody>
-			<% end %>	
-			</table>
-			 <!-- ３列目コメントフォーム -->
-				<%= form_for [@bookdetail, @post_comment] do |f| %>
-				<%= f.text_area :comment, row:'5', class: "form-control",placeholder:"コメントを入力してください" %>
-				<%= f.submit "送信" %>
-				<% end %>
-			<!-- -- ３列目コメントフォーム -- -->
-			<!-- 4列目エラーメッセージ -->
+			<div id="comments_area">
+				<%= render 'post_comments/post_comment', post_comments: @bookdetail.post_comments %>
+			</div>
+			<!-- ４列目エラーメッセージ -->
 			<% if @post_comment.errors.any? %>
 				<% @post_comment.errors.full.messages.each do |message| %>
 				<li><%= message %></li>

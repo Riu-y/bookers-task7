@@ -1,0 +1,20 @@
+<table class="table">
+	<% post_comments.each do |post_comment| %>
+	<tbody>
+		<tr>
+			<td>
+				<%= attachment_image_tag post_comment.user,:profile_image, :fill,60,60, fallback:"no-image-mini.jpg" %><br>
+				<%= post_comment.user.name %>
+			</td>
+			<td>
+				<%= post_comment.comment %>
+			</td>
+			<td>
+				<% if @bookdetail.user == current_user %>
+				<%= link_to "Destroy", book_post_comments_path(post_comment) , method: :delete, "data-confirm"=>"本当にコメントを削除しても良いですか？", class: "btn-sm btn-danger" %>
+				<% end %>
+			</td>
+		</tr>
+	</tbody>
+	<% end %>	
+</table>

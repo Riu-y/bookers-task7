@@ -1,0 +1,5 @@
+			<!-- [@bookdetail, @post_comment]  -->
+			<%= form_with(model: [bookdetail, post_comment]) do |f| %>
+			<%= f.text_area :comment, row:'5', class: "form-control",placeholder:"コメントを入力してください" %>
+			<%= f.submit "送 信", class: "btn-sm btn-success" %>
+			<% end %><br>
