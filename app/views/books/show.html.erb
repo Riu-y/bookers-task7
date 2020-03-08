@@ -26,19 +26,8 @@
 							<%= @bookdetail.body %>
 						</td>
 						<td><!-- 良いね機能 -->
-							<% if @bookdetail.favorited_by?(current_user) %>
-							 <%= link_to book_favorites_path(@bookdetail), method: :delete do %>
-									<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-									<%= content_tag :span, "", class: "glyphicon glyphicon-heart" %>
-									<%= @bookdetail.favorites.count %>
-								<% end %>
-							<% else %>
-								<%= link_to book_favorites_path(@bookdetail), method: :post do %>
-									<%= content_tag :span, "", class: "glyphicon glyphicon-heart-empty" %>
-									<i class="fa fa-heart-o" aria-hidden="true"></i>
-									<%= @bookdetail.favorites.count %>
-							  <% end %>
-							<% end %>
+							<%= render partial: 'favorites/favorite',locals: {book: @bookdetail } %>
+						</div>
 						</td><!-- 良いね機能 -->
 						<td><!-- コメントカウント機能 -->
 							<a>コメント数：<%= @bookdetail.post_comments.count %></a>
