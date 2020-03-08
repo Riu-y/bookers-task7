@@ -52249,3 +52249,1107 @@ Processing by BooksController#show as HTML
 Completed 200 OK in 245ms (Views: 173.9ms | ActiveRecord: 32.9ms)
 
 
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddColumnsToUsers (20200308063759)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "users" ADD "postcode" integer[0m
+  ↳ db/migrate/20200308063759_add_columns_to_users.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "prefecture_code" integer[0m
+  ↳ db/migrate/20200308063759_add_columns_to_users.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "address_city" varchar[0m
+  ↳ db/migrate/20200308063759_add_columns_to_users.rb:5
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "address_street" varchar[0m
+  ↳ db/migrate/20200308063759_add_columns_to_users.rb:6
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "users" ADD "address_building" stirng[0m
+  ↳ db/migrate/20200308063759_add_columns_to_users.rb:7
+  [1m[36mActiveRecord::SchemaMigration Create (2.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200308063759"]]
+  ↳ bin/rails:9
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/books/3" for 10.0.2.2 at 2020-03-08 07:37:47 +0000
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mBook Load (1.5ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:4
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:6
+  Rendering books/show.html.erb within layouts/application
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/_profile.html.erb:23
+  [1m[36mRelationship Load (0.3ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 5], ["following_id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 5], ["following_id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/_unfollow.html.erb:1
+  Rendered users/_unfollow.html.erb (2.5ms)
+  Rendered users/_follow_form.html.erb (15.1ms)
+  Rendered users/_profile.html.erb (56.5ms)
+  Rendered books/_newform.html.erb (35.5ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:17
+  [1m[36mFavorite Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 3], ["user_id", 5], ["LIMIT", 1]]
+  ↳ app/models/book.rb:17
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 3]]
+  ↳ app/views/favorites/_favorite.html.erb:8
+  Rendered favorites/_favorite.html.erb (9.1ms)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 3]]
+  ↳ app/views/books/show.html.erb:33
+  Rendered post_comments/_comment_form.html.erb (2.4ms)
+  [1m[36mPostComment Load (2.0ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 3]]
+  ↳ app/views/post_comments/_post_comment.html.erb:2
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post_comments/_post_comment.html.erb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post_comments/_post_comment.html.erb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post_comments/_post_comment.html.erb:6
+  Rendered post_comments/_post_comment.html.erb (34.7ms)
+  Rendered books/show.html.erb within layouts/application (178.4ms)
+Completed 200 OK in 3560ms (Views: 3474.7ms | ActiveRecord: 22.1ms)
+
+
+Started DELETE "/users/sign_out" for 10.0.2.2 at 2020-03-08 07:37:54 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"hSz5Xnp0D3wvvVB2CchbzJ9jXlfPSg31D9UcPLNmEcjBzoSNhSbGZqAchqvv5lo1kJYwgykcnkO+pEq29p/lUQ=="}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 35ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 10.0.2.2 at 2020-03-08 07:37:54 +0000
+Processing by HomeController#top as HTML
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 194ms (Views: 187.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 07:37:56 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064774847260 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (18.1ms)
+Completed 200 OK in 141ms (Views: 138.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 07:57:23 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064887849560 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (2.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (74.2ms)
+Completed 200 OK in 283ms (Views: 280.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:25:28 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:24: syntax error, unexpected keyword_class, expecting ')'
+...laceholder:'郵便番号' class: "postal_code" );@output_buf...
+...                          ^~~~~
+/vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:65: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+          ^~~~~~):
+  
+app/views/devise/registrations/new.html.erb:24: syntax error, unexpected keyword_class, expecting ')'
+app/views/devise/registrations/new.html.erb:65: syntax error, unexpected keyword_ensure, expecting end-of-input
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:27:15 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:24: syntax error, unexpected keyword_class, expecting ')'
+...laceholder:'郵便番号' class: "postal_code" );@output_buf...
+...                          ^~~~~
+/vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:65: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+          ^~~~~~):
+  
+app/views/devise/registrations/new.html.erb:24: syntax error, unexpected keyword_class, expecting ')'
+app/views/devise/registrations/new.html.erb:65: syntax error, unexpected keyword_ensure, expecting end-of-input
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:27:22 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (1.5ms)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:24: syntax error, unexpected keyword_class, expecting ')'
+...laceholder:'郵便番号' class: "postal_code" );@output_buf...
+...                          ^~~~~
+/vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:64: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+          ^~~~~~):
+  
+app/views/devise/registrations/new.html.erb:24: syntax error, unexpected keyword_class, expecting ')'
+app/views/devise/registrations/new.html.erb:64: syntax error, unexpected keyword_ensure, expecting end-of-input
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:27:29 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:24: syntax error, unexpected keyword_class, expecting ')'
+...laceholder:'郵便番号' class: "postal_code" );@output_buf...
+...                          ^~~~~
+/vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:64: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+          ^~~~~~):
+  
+app/views/devise/registrations/new.html.erb:24: syntax error, unexpected keyword_class, expecting ')'
+app/views/devise/registrations/new.html.erb:64: syntax error, unexpected keyword_ensure, expecting end-of-input
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:28:59 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (1.7ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:24: syntax error, unexpected keyword_class, expecting ')'
+...laceholder:'郵便番号' class: "postal_code" );@output_buf...
+...                          ^~~~~):
+  
+app/views/devise/registrations/new.html.erb:24: syntax error, unexpected keyword_class, expecting ')'
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:29:40 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064883693260 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/registrations/new.html.erb within layouts/application (15.1ms)
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `postal_code' for #<User:0x00007f7281034b70>):
+    21:           </div>
+    22:           <div class="field">
+    23:             <%= f.label :Postal_code %><br>
+    24:             <%= f.text_field :postal_code,autofocus: true, placeholder:'postal_code', class: "postal_code" %>
+    25:           </div>
+    26:           <div class="field">
+    27:             <%= f.label :prefecture_code %><br>
+  
+app/views/devise/registrations/new.html.erb:24:in `block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064883693260'
+app/views/devise/registrations/new.html.erb:8:in `_app_views_devise_registrations_new_html_erb__3029870403648263722_70064883693260'
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:33:12 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064810340960 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (33.0ms)
+Completed 200 OK in 457ms (Views: 455.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:42:24 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064775374840 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 218ms (Views: 216.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:44:18 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064889408640 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (23.7ms)
+Completed 200 OK in 293ms (Views: 291.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:44:38 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_47205953351720 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (30.5ms)
+Completed 200 OK in 320ms (Views: 318.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:44:51 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064741719520 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (26.5ms)
+Completed 200 OK in 243ms (Views: 241.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:45:03 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064808849880 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (20.6ms)
+Completed 200 OK in 407ms (Views: 405.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:45:15 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064943816040 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (2.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (20.2ms)
+Completed 200 OK in 255ms (Views: 253.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:45:49 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064885726100 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 273ms (Views: 270.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:47:51 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064744138740 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 262ms (Views: 260.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:51:15 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064811189520 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 237ms (Views: 235.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:52:19 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064776298720 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (25.1ms)
+Completed 200 OK in 299ms (Views: 295.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:53:35 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064891459280 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (1.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 197ms (Views: 193.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 10.0.2.2 at 2020-03-08 08:54:11 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NCYDnXlpughkFxxw8n9pw2pI0hBowlgox0Hg8HZEg4Umk+BqefO5aRiGrVDNAQmFzSzQWrpSOO+EwV6xwDvnQQ==", "user"=>{"name"=>"sample user6", "email"=>"sample6@gmail.com", "postcode"=>"2500002", "prefecture_code"=>"14", "address_city"=>"小田原市", "address_street"=>"寿町", "address_building"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameters: :postcode, :prefecture_code, :address_city, :address_street, :address_building
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (3.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sample6@gmail.com"], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_47205963199120 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_error_messages.html.erb (1.6ms)
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (29.6ms)
+Completed 200 OK in 268ms (Views: 224.8ms | ActiveRecord: 3.9ms)
+
+
+Started POST "/users" for 10.0.2.2 at 2020-03-08 08:54:38 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VKAnFzRAdYh/ZEFpkBD/+ixii7i7UWq3LsrXDV0yAJVGFcTgNNp26QP18Emvbp+8iwaJ8mnBCnBtSmlM601kUQ==", "user"=>{"name"=>"sample user6", "email"=>"sample6@gmail.com", "postcode"=>"2500002", "prefecture_code"=>"14", "address_city"=>"小田原市", "address_street"=>"寿町5-6-17", "address_building"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameters: :postcode, :prefecture_code, :address_city, :address_street, :address_building
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sample6@gmail.com"], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (9.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "sample6@gmail.com"], ["encrypted_password", "$2a$11$eXWMVetsfoPsFtylkmYJZeqwUfYx76vsrD997xcHbi9z0b/P/po.O"], ["name", "sample user6"], ["created_at", "2020-03-08 08:54:38.370155"], ["updated_at", "2020-03-08 08:54:38.370155"]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", "2020-03-08 08:54:38.386943"], ["last_sign_in_at", "2020-03-08 08:54:38.386943"], ["current_sign_in_ip", "10.0.2.2"], ["last_sign_in_ip", "10.0.2.2"], ["updated_at", "2020-03-08 08:54:38.388175"], ["id", 6]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 244ms (ActiveRecord: 17.7ms)
+
+
+Started GET "/users/6" for 10.0.2.2 at 2020-03-08 08:54:38 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 6]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 6]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.5ms)
+  Rendered users/_profile.html.erb (24.3ms)
+  Rendered books/_newform.html.erb (2.1ms)
+  [1m[36mBook Load (1.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/views/users/show.html.erb:26
+  Rendered users/show.html.erb within layouts/application (40.1ms)
+Completed 200 OK in 220ms (Views: 203.1ms | ActiveRecord: 5.7ms)
+
+
+Started POST "/books" for 10.0.2.2 at 2020-03-08 08:55:54 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"d3ThQY5YflOddGhSQekCsMpsPPm2DIxEqkAIfIER3QFlwQK2jsJ9MuHl2XJ+l2L2bQg+s2Sc7IPpwLY9N265xQ==", "book"=>{"title"=>"テスト", "body"=>"tesuto\r\n"}, "commit"=>"Create Book"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:21
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/books_controller.rb:22
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:22
+  [1m[36mBook Create (5.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "テスト"], ["body", "tesuto\r\n"], ["user_id", 6], ["created_at", "2020-03-08 08:55:54.515426"], ["updated_at", "2020-03-08 08:55:54.515426"]]
+  ↳ app/controllers/books_controller.rb:22
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/books_controller.rb:22
+Redirected to http://localhost:3000/books/7
+Completed 302 Found in 37ms (ActiveRecord: 13.1ms)
+
+
+Started GET "/books/7" for 10.0.2.2 at 2020-03-08 08:55:54 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mBook Load (1.5ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:4
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:6
+  Rendering books/show.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 6]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 6]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.4ms)
+  Rendered users/_profile.html.erb (19.8ms)
+  Rendered books/_newform.html.erb (2.7ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:17
+  [1m[36mFavorite Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 7], ["user_id", 6], ["LIMIT", 1]]
+  ↳ app/models/book.rb:17
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 7]]
+  ↳ app/views/favorites/_favorite.html.erb:8
+  Rendered favorites/_favorite.html.erb (6.4ms)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 7]]
+  ↳ app/views/books/show.html.erb:33
+  Rendered post_comments/_comment_form.html.erb (1.1ms)
+  [1m[36mPostComment Load (1.1ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 7]]
+  ↳ app/views/post_comments/_post_comment.html.erb:2
+  Rendered post_comments/_post_comment.html.erb (5.8ms)
+  Rendered books/show.html.erb within layouts/application (85.9ms)
+Completed 200 OK in 359ms (Views: 329.2ms | ActiveRecord: 8.8ms)
+
+
+Started GET "/books/7" for 10.0.2.2 at 2020-03-08 08:56:15 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mBook Load (1.7ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:4
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:6
+  Rendering books/show.html.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 6]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 6]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.7ms)
+  Rendered users/_profile.html.erb (28.8ms)
+  Rendered books/_newform.html.erb (3.1ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:17
+  [1m[36mFavorite Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 7], ["user_id", 6], ["LIMIT", 1]]
+  ↳ app/models/book.rb:17
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 7]]
+  ↳ app/views/favorites/_favorite.html.erb:8
+  Rendered favorites/_favorite.html.erb (8.0ms)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 7]]
+  ↳ app/views/books/show.html.erb:33
+  Rendered post_comments/_comment_form.html.erb (1.7ms)
+  [1m[36mPostComment Load (0.8ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 7]]
+  ↳ app/views/post_comments/_post_comment.html.erb:2
+  Rendered post_comments/_post_comment.html.erb (3.3ms)
+  Rendered books/show.html.erb within layouts/application (115.1ms)
+Completed 200 OK in 482ms (Views: 458.5ms | ActiveRecord: 8.2ms)
+
+
+Started POST "/books" for 10.0.2.2 at 2020-03-08 08:56:28 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9keG0GZuwt3ol92NeGT6zCLPNIpy7NrRZiL0C6yJutLk8mUnZvTBvJQGbK1HGpqKhas2wKB8uhYlokpKGvbeFg==", "book"=>{"title"=>"テスト2", "body"=>"テスト"}, "commit"=>"Create Book"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:21
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/books_controller.rb:22
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:22
+  [1m[36mBook Create (2.6ms)[0m  [1m[32mINSERT INTO "books" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "テスト2"], ["body", "テスト"], ["user_id", 6], ["created_at", "2020-03-08 08:56:28.236408"], ["updated_at", "2020-03-08 08:56:28.236408"]]
+  ↳ app/controllers/books_controller.rb:22
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/books_controller.rb:22
+Redirected to http://localhost:3000/books/8
+Completed 302 Found in 32ms (ActiveRecord: 10.3ms)
+
+
+Started GET "/books/8" for 10.0.2.2 at 2020-03-08 08:56:28 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:4
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:6
+  Rendering books/show.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 6]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 6]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (1.2ms)
+  Rendered users/_profile.html.erb (21.1ms)
+  Rendered books/_newform.html.erb (3.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:17
+  [1m[36mFavorite Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 8], ["user_id", 6], ["LIMIT", 1]]
+  ↳ app/models/book.rb:17
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 8]]
+  ↳ app/views/favorites/_favorite.html.erb:8
+  Rendered favorites/_favorite.html.erb (6.8ms)
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 8]]
+  ↳ app/views/books/show.html.erb:33
+  Rendered post_comments/_comment_form.html.erb (1.4ms)
+  [1m[36mPostComment Load (0.8ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 8]]
+  ↳ app/views/post_comments/_post_comment.html.erb:2
+  Rendered post_comments/_post_comment.html.erb (3.9ms)
+  Rendered books/show.html.erb within layouts/application (79.6ms)
+Completed 200 OK in 329ms (Views: 308.1ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/books/8" for 10.0.2.2 at 2020-03-08 08:57:05 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:4
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:6
+  Rendering books/show.html.erb within layouts/application
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 6]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 6]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.7ms)
+  Rendered users/_profile.html.erb (26.0ms)
+  Rendered books/_newform.html.erb (2.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:17
+  [1m[36mFavorite Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 8], ["user_id", 6], ["LIMIT", 1]]
+  ↳ app/models/book.rb:17
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 8]]
+  ↳ app/views/favorites/_favorite.html.erb:8
+  Rendered favorites/_favorite.html.erb (15.4ms)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 8]]
+  ↳ app/views/books/show.html.erb:33
+  Rendered post_comments/_comment_form.html.erb (1.4ms)
+  [1m[36mPostComment Load (1.1ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 8]]
+  ↳ app/views/post_comments/_post_comment.html.erb:2
+  Rendered post_comments/_post_comment.html.erb (13.6ms)
+  Rendered books/show.html.erb within layouts/application (162.1ms)
+Completed 200 OK in 404ms (Views: 372.0ms | ActiveRecord: 9.8ms)
+
+
+Started POST "/books" for 10.0.2.2 at 2020-03-08 08:57:12 +0000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"izssJ7emCnsnWFN+nSiRGOi+/WVrbLwsGLtt3l/wO1uZjs/QtzwJGlvJ4l6iVvFeT9r/L7n83OtbO9Of6Y9fnw==", "book"=>{"title"=>"テスト", "body"=>"テスト"}, "commit"=>"Create Book"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:21
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/books_controller.rb:22
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:22
+  [1m[36mBook Create (4.7ms)[0m  [1m[32mINSERT INTO "books" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "テスト"], ["body", "テスト"], ["user_id", 6], ["created_at", "2020-03-08 08:57:12.739957"], ["updated_at", "2020-03-08 08:57:12.739957"]]
+  ↳ app/controllers/books_controller.rb:22
+  [1m[35m (6.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/books_controller.rb:22
+Redirected to http://localhost:3000/books/9
+Completed 302 Found in 37ms (ActiveRecord: 14.1ms)
+
+
+Started GET "/books/9" for 10.0.2.2 at 2020-03-08 08:57:12 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mBook Load (1.8ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:4
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:6
+  Rendering books/show.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 6]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 6]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.7ms)
+  Rendered users/_profile.html.erb (18.1ms)
+  Rendered books/_newform.html.erb (1.8ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/books/show.html.erb:17
+  [1m[36mFavorite Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."book_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["book_id", 9], ["user_id", 6], ["LIMIT", 1]]
+  ↳ app/models/book.rb:17
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."book_id" = ?[0m  [["book_id", 9]]
+  ↳ app/views/favorites/_favorite.html.erb:8
+  Rendered favorites/_favorite.html.erb (10.1ms)
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 9]]
+  ↳ app/views/books/show.html.erb:33
+  Rendered post_comments/_comment_form.html.erb (1.0ms)
+  [1m[36mPostComment Load (0.8ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."book_id" = ?[0m  [["book_id", 9]]
+  ↳ app/views/post_comments/_post_comment.html.erb:2
+  Rendered post_comments/_post_comment.html.erb (3.2ms)
+  Rendered books/show.html.erb within layouts/application (124.9ms)
+Completed 200 OK in 380ms (Views: 355.2ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/users/6/edit" for 10.0.2.2 at 2020-03-08 08:57:24 +0000
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (23.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (26.6ms)
+Completed 200 OK in 285ms (Views: 175.1ms | ActiveRecord: 28.2ms)
+
+
+Started GET "/users" for 10.0.2.2 at 2020-03-08 08:57:33 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (7.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 6]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 6]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.6ms)
+  Rendered users/_profile.html.erb (32.5ms)
+  Rendered books/_newform.html.erb (3.1ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.3ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.4ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.4ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 4]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.2ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 5]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 5]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.3ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 5], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 6]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 6]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (103.6ms)
+Completed 200 OK in 290ms (Views: 215.2ms | ActiveRecord: 16.0ms)
+
+
+Started POST "/relationships" for 10.0.2.2 at 2020-03-08 08:57:39 +0000
+Processing by RelationshipsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"co3kF38na+2/BwUH9GwK1Dt58JmbJDU4n8LzazdSxkYR233RyjMk9Rl5F+/SVx1DZTTJy3icA2VMjtYkLNyYww==", "relationship"=>{"following_id"=>"4"}, "commit"=>"Follow"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/relationships_controller.rb:3
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/relationships_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:24
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mRelationship Create (4.3ms)[0m  [1m[32mINSERT INTO "relationships" ("follower_id", "following_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["follower_id", 6], ["following_id", 4], ["created_at", "2020-03-08 08:57:39.852061"], ["updated_at", "2020-03-08 08:57:39.852061"]]
+  ↳ app/models/user.rb:24
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:24
+Redirected to http://localhost:3000/users
+Completed 302 Found in 41ms (ActiveRecord: 15.4ms)
+
+
+Started GET "/users" for 10.0.2.2 at 2020-03-08 08:57:39 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 6]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 6]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.9ms)
+  Rendered users/_profile.html.erb (29.9ms)
+  Rendered books/_newform.html.erb (4.1ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (1.0ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.9ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (2.8ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 4]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (1.4ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:34
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 5]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 5]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.9ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 5], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 6]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 6]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (262.8ms)
+Completed 200 OK in 480ms (Views: 444.2ms | ActiveRecord: 20.7ms)
+
+
+Started POST "/relationships" for 10.0.2.2 at 2020-03-08 08:57:40 +0000
+Processing by RelationshipsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BiRh5wCAuP2Tg4huGAp9UzDl2ywkZEGSuPltDr+ZjG0UkYIQABq7nO8SOU4ndB0Vl4HZZvb0IVX7edNPCeboqQ==", "relationship"=>{"following_id"=>"3"}, "commit"=>"Follow"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/relationships_controller.rb:3
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/relationships_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:24
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mRelationship Create (5.8ms)[0m  [1m[32mINSERT INTO "relationships" ("follower_id", "following_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["follower_id", 6], ["following_id", 3], ["created_at", "2020-03-08 08:57:40.918472"], ["updated_at", "2020-03-08 08:57:40.918472"]]
+  ↳ app/models/user.rb:24
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:24
+Redirected to http://localhost:3000/users
+Completed 302 Found in 45ms (ActiveRecord: 17.2ms)
+
+
+Started GET "/users" for 10.0.2.2 at 2020-03-08 08:57:40 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 6]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 6]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.6ms)
+  Rendered users/_profile.html.erb (26.5ms)
+  Rendered books/_newform.html.erb (3.3ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (11.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.6ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (1.1ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.5ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:34
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 4]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.6ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:34
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 5]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 5]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.4ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 5], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 6]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 6]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (138.7ms)
+Completed 200 OK in 341ms (Views: 300.1ms | ActiveRecord: 27.1ms)
+
+
+Started POST "/relationships" for 10.0.2.2 at 2020-03-08 08:57:42 +0000
+Processing by RelationshipsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HW1kROFj8UzTVt6GHDSYxzjZsYb6KD9rs23h4zXLfRgP2Iez4fnyLa/Hb6YjSviBn72zzCi4X6zw7V+ig7QZ3A==", "relationship"=>{"following_id"=>"5"}, "commit"=>"Follow"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/relationships_controller.rb:3
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/relationships_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:24
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[36mRelationship Create (10.7ms)[0m  [1m[32mINSERT INTO "relationships" ("follower_id", "following_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["follower_id", 6], ["following_id", 5], ["created_at", "2020-03-08 08:57:42.979579"], ["updated_at", "2020-03-08 08:57:42.979579"]]
+  ↳ app/models/user.rb:24
+  [1m[35m (6.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:24
+Redirected to http://localhost:3000/users
+Completed 302 Found in 55ms (ActiveRecord: 20.4ms)
+
+
+Started GET "/users" for 10.0.2.2 at 2020-03-08 08:57:43 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 6]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 6]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.5ms)
+  Rendered users/_profile.html.erb (27.0ms)
+  Rendered books/_newform.html.erb (1.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (4.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 1]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.8ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 2]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.3ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 3]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 3]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.3ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:34
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 4]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.9ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:34
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 5]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 5]]
+  ↳ app/views/users/index.html.erb:29
+  [1m[36mRelationship Load (0.2ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 5], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."following_id" = ? LIMIT ?[0m  [["follower_id", 6], ["following_id", 5], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:34
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 6]]
+  ↳ app/views/users/index.html.erb:28
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 6]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (122.8ms)
+Completed 200 OK in 332ms (Views: 304.6ms | ActiveRecord: 16.7ms)
+
+
+Started DELETE "/users/sign_out" for 10.0.2.2 at 2020-03-08 08:58:31 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"6QyOi7KnwKT6hpWh0QYfPPHLa2Onuts9ufxMPr/aOv77uW18sj3DxYYXJIHueH96Vq9pKXUqu/r6fPJ/CaVeOg=="}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 14ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 10.0.2.2 at 2020-03-08 08:58:31 +0000
+Processing by HomeController#top as HTML
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 152ms (Views: 146.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 08:58:34 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064809918660 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (24.8ms)
+Completed 200 OK in 154ms (Views: 151.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 09:05:27 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064944276060 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (1.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (53.3ms)
+Completed 200 OK in 391ms (Views: 388.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 10.0.2.2 at 2020-03-08 09:05:47 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__3029870403648263722_70064886347880 at /vagrant/submissions2/bookers-task7/app/views/devise/registrations/new.html.erb:9)
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 205ms (Views: 202.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 10.0.2.2 at 2020-03-08 09:06:22 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fHhp9ya565YSCyxpkKkpWBjgp1WgxBeGDarfimsUhaHJqTUylyspbMzkj9m1tiKwCvxQw0NjBKCqoi9MmB7RSA==", "user"=>{"name"=>"sample user7", "email"=>"sample7@gmail.com", "postcode"=>"2500117", "prefecture_code"=>"14", "address_city"=>"南足柄市", "address_street"=>"塚原2000", "address_building"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameters: :postcode, :prefecture_code, :address_city, :address_street, :address_building
+  [1m[35m (0.7ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sample7@gmail.com"], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (2.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "sample7@gmail.com"], ["encrypted_password", "$2a$11$RVcwEw3T.C55gr1I6PgtBu1/0ZhU7ungga/br/kTgCGrzQFnTKHti"], ["name", "sample user7"], ["created_at", "2020-03-08 09:06:22.248712"], ["updated_at", "2020-03-08 09:06:22.248712"]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (2.0ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", "2020-03-08 09:06:22.258152"], ["last_sign_in_at", "2020-03-08 09:06:22.258152"], ["current_sign_in_ip", "10.0.2.2"], ["last_sign_in_ip", "10.0.2.2"], ["updated_at", "2020-03-08 09:06:22.260350"], ["id", 7]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/users/7
+Completed 302 Found in 213ms (ActiveRecord: 12.1ms)
+
+
+Started GET "/users/7" for 10.0.2.2 at 2020-03-08 09:06:22 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."following_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 7]]
+  ↳ app/views/users/_profile.html.erb:16
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."following_id" = ?[0m  [["following_id", 7]]
+  ↳ app/views/users/_profile.html.erb:23
+  Rendered users/_follow_form.html.erb (0.4ms)
+  Rendered users/_profile.html.erb (16.2ms)
+  Rendered books/_newform.html.erb (1.9ms)
+  [1m[36mBook Load (1.0ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", 7]]
+  ↳ app/views/users/show.html.erb:26
+  Rendered users/show.html.erb within layouts/application (30.2ms)
+Completed 200 OK in 202ms (Views: 186.3ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/users/7/edit" for 10.0.2.2 at 2020-03-08 09:09:57 +0000
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (5.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 210ms (Views: 139.4ms | ActiveRecord: 7.9ms)
+
+
+Started DELETE "/users/sign_out" for 10.0.2.2 at 2020-03-08 09:10:03 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Shabk3opxjWAwqFF7zrXBzLE56wjseuV7jwLhBVJ+AD/x8dWy7sEz14tAvXKJdzvINgQOsAW+LNJNPtC5kOs6Q=="}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 14ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 10.0.2.2 at 2020-03-08 09:10:03 +0000
+Processing by HomeController#top as HTML
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 205ms (Views: 198.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2020-03-08 09:10:05 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (37.2ms)
+Completed 200 OK in 201ms (Views: 198.9ms | ActiveRecord: 0.0ms)
+
+
