@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
 
   has_many :followers, through: :follower_relationships
-
+  attr_accessor :full_address
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)
   end
@@ -38,6 +38,7 @@ class User < ApplicationRecord
   jp_prefecture :prefecture_code
 
   def prefecture_name
+
     JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
   end
 
@@ -45,7 +46,12 @@ class User < ApplicationRecord
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
-  geocoded_by :address
+  def full_address
+    self.full_address = prefecture_name + address_city + address_street + address_building
+  end
+
+
+  geocoded_by :full_address
   after_validation :geocode
   # 上記で登録内容の変更に伴い地図も変更させる
 

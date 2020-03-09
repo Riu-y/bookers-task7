@@ -14,5 +14,8 @@ Rails.application.routes.draw do
   get 'home/about' => 'home#about'
 
   get 'search/index' =>'search#index'
+
+  resources :maps, only: [:index]
+  get '/map_request', to: 'maps#map', as: 'map_request'
 end
 

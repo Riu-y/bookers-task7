@@ -12,6 +12,24 @@ sample1
 sample user2
 sample2
 
+	def index
+	end
+
+	def map
+		respond_to do |format|
+			format.js
+		end
+		# respond_to以下の記述よって
+		# remote: trueのアクセスに対して
+		# map.js.erbが変更する様になる。
+
+勉強した方が良いもの
+
+
+		activerecordとデータベースの関係
+
+
+
 ーーーーー
 いいね機能
 
